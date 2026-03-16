@@ -11,7 +11,7 @@
         
         .header-main { text-align: center; padding: 15px 0; border-bottom: 2px solid var(--gold); position: sticky; top: 0; background: var(--bg); z-index: 10000; }
         .header-main h1 { color: var(--gold); font-size: 25px; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; }
-        .sub-status { color: var(--green); font-size: 11px; margin-top: 4px; display: block; text-transform: uppercase; }
+        .sub-status { color: var(--green); font-size: 14px; margin-top: 4px; display: block; text-transform: uppercase; font-weight: bold; }
 
         .nav { display: flex; background: #0a0a0a; padding: 2px; gap: 2px; }
         .nav button { flex: 1; padding: 14px 2px; border: none; background: #1a1a1a; color: #888; cursor: pointer; font-weight: bold; font-size: 10px; text-transform: uppercase; }
@@ -21,37 +21,32 @@
         .card { background: var(--card); border: 1px solid var(--border); padding: 15px; margin-bottom: 10px; min-height: 480px; display: flex; flex-direction: column; border-radius: 8px; }
 
         label { color: var(--gold); font-size: 11px; font-weight: bold; margin-bottom: 5px; display: block; text-transform: uppercase; }
-        input, select { background: #000; border: 1px solid #444; color: #fff; padding: 12px; font-size: 14px; width: 100%; border-radius: 6px; margin-bottom: 12px; }
+        input, select, textarea { background: #000; border: 1px solid #444; color: #fff; padding: 12px; font-size: 14px; width: 100%; border-radius: 6px; margin-bottom: 12px; }
         
         table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-bottom: 15px; }
         th { background: #1a1a1a; color: var(--gold); padding: 10px; font-size: 10px; border: 1px solid #222; text-align: left; }
         td { padding: 8px; border: 1px solid #222; position: relative; font-size: 13px; }
 
-        /* MODIFICHE RICHIESTE: Caratteri rimpiccioliti nei box vendita */
         .p-search { font-size: 11px !important; padding: 8px 4px !important; }
         .p-qta { font-size: 11px !important; padding: 8px 2px !important; text-align: center; }
         .p-prezzo { font-size: 11px !important; padding: 8px 2px !important; text-align: center; }
 
-        /* GRIGLIA ARCHIVIO */
         .db-grid-row { display: grid; grid-template-columns: 2.2fr repeat(5, 1.1fr) 35px; gap: 2px; border-bottom: 1px solid #222; padding: 6px 0; align-items: center; }
         .db-grid-row input { font-size: 10px; padding: 8px 2px; border: 1px solid transparent; background: #0a0a0a; color: #fff; margin: 0; text-align: center; }
-        .db-grid-row input:focus { border: 1px solid var(--gold); outline: none; background: #111; }
         .db-header-grid { display: grid; grid-template-columns: 2.2fr repeat(5, 1.1fr) 35px; gap: 2px; background: #1a1a1a; color: var(--gold); font-size: 9px; font-weight: bold; padding: 10px 0; text-align: center; border-radius: 4px 4px 0 0; }
 
-        .suggest-box { position: absolute; top: 100%; left: 0; background: #1a1a1a; border: 1px solid var(--gold); width: 100%; z-index: 99999; max-height: 220px; overflow-y: auto; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .suggest-box { position: absolute; top: 100%; left: 0; background: #1a1a1a; border: 1px solid var(--gold); width: 100%; z-index: 99999; max-height: 220px; overflow-y: auto; display: none; }
         .suggest-item { padding: 14px; cursor: pointer; border-bottom: 1px solid #333; font-size: 13px; color: #fff; }
 
         .btn-gold { background: var(--gold); color: #000; border: none; padding: 18px; width: 100%; font-weight: bold; margin-top: auto; cursor: pointer; font-size: 15px; text-transform: uppercase; border-radius: 6px; }
         .btn-small { background: #222; color: var(--gold); border: 1px solid var(--gold); padding: 10px; cursor: pointer; width: 100%; margin-top: 5px; font-size: 12px; border-radius: 6px; }
         .btn-backup { background: #333; color: var(--text); border: 1px solid #555; padding: 14px; width: 48%; font-size: 11px; cursor: pointer; font-weight: bold; border-radius: 6px; }
-        
-        /* X ROSSA RIMPICCIOLITA */
         .btn-red-x { background: var(--red); color: white; border: none; padding: 2px 6px; font-size: 10px; font-weight: bold; cursor: pointer; border-radius: 3px; }
 
         .summary-bar { display: flex; justify-content: space-between; padding: 18px; background: #000; border: 2px solid var(--gold); margin-top: 15px; font-weight: bold; font-size: 18px; border-radius: 8px; }
         .hidden { display: none; }
 
-        /* MODALE DETTAGLIO VENDITA */
+        /* MODALE BACKUP */
         #modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: #111; border: 1px solid var(--gold); border-radius: 8px; width: 100%; max-width: 500px; padding: 20px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: 0 0 20px var(--gold); }
         .modal-close { position: absolute; top: 10px; right: 10px; background: var(--red); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; }
@@ -59,17 +54,16 @@
 </head>
 <body>
 
-<div id="modal-overlay" onclick="closeModal(event)">
+<div id="modal-overlay" onclick="closeModal()">
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="modal-close" onclick="closeModal()">CHIUDI</button>
-        <h2 style="color:var(--gold); border-bottom: 1px solid #333; padding-bottom:10px; margin-top:10px; font-size:18px;">Dettaglio Vendita</h2>
-        <div id="modal-body" style="margin-top:15px; font-size:13px;"></div>
+        <div id="modal-body" style="margin-top:25px;"></div>
     </div>
 </div>
 
 <div class="header-main">
     <h1>PHONING SIMULATOR </h1>
-    <span class="sub-status">Versione Marzo 1-26 </span>
+    <span class="sub-status">Versione Marzo 1-26 (TEXT MODE) </span>
 </div>
 
 <div class="nav">
@@ -80,7 +74,6 @@
 </div>
 
 <div class="container">
-    
     <div id="sec-vendita" class="section">
         <div class="card">
             <div style="display:flex; gap:10px;">
@@ -92,11 +85,10 @@
                 <div style="flex:1">
                     <label>Fascia</label>
                     <select id="v-fascia" onchange="updateAllPrices()">
-                        <option value="7">pz 7  (4+3)</option><option value="15">pz 15  (7+8)</option><option value="20">pz 20  (10+10)</option><option value="36">pz 36 (17+19)</option><option value="67">pz 67  (28+39)</option>
+                        <option value="7">pz 7 (4+3)</option><option value="15">pz 15 (7+8)</option><option value="20">pz 20 (10+10)</option><option value="36">pz 36 (17+19)</option><option value="67">pz 67 (28+39)</option>
                     </select>
                 </div>
             </div>
-            
             <div style="flex-grow: 1;">
                 <table id="table-v">
                     <thead><tr><th style="width:40%">ARTICOLO</th><th style="width:30%">PREZZO €.</th><th style="width:15%">Q.TÀ</th><th style="width:15%">TOT</th><th style="width:6%"></th></tr></thead>
@@ -104,7 +96,6 @@
                 </table>
                 <button class="btn-small" onclick="addRow()">+ AGGIUNGI RIGA PRODOTTO</button>
             </div>
-
             <div class="summary-bar">
                 <span>Totale</span>
                 <span style="color:var(--green)"><span id="tot-prezzo">0.00</span> €</span>
@@ -117,7 +108,7 @@
         <div class="card">
             <label id="cli-label">Nuovo Cliente</label>
             <input type="text" id="new-cliente-nome" placeholder="Cognome e Nome">
-            <button class="btn-gold" id="btn-cli-save" style="margin-top:0; margin-bottom:25px;" onclick="salvaCliente()">SALVA CLIENTE</button>
+            <button class="btn-gold" onclick="salvaCliente()">SALVA CLIENTE</button>
             <label>I Tuoi Clienti</label>
             <div id="lista-clienti-box" style="border:1px solid #333; border-radius:6px; flex-grow:1; overflow-y:auto; background:#050505;"></div>
         </div>
@@ -126,13 +117,12 @@
     <div id="sec-archivio" class="section hidden">
         <div class="card" style="padding: 5px;">
             <div style="display:flex; justify-content:space-between; margin-bottom:15px; background:#1a1a1a; padding:12px; border-radius:6px;">
-                <button class="btn-backup" onclick="exportBackup()" style="background:var(--green); color:black;">ESPORTA DATI</button>
-                <button class="btn-backup" onclick="document.getElementById('importFile').click()" style="background:var(--gold); color:black;">IMPORTA DATI</button>
-                <input type="file" id="importFile" class="hidden" accept=".json" onchange="importBackup(this)">
+                <button class="btn-backup" onclick="openExportModal()" style="background:var(--green); color:black;">ESPORTA (COPIA TESTO)</button>
+                <button class="btn-backup" onclick="openImportModal()" style="background:var(--gold); color:black;">IMPORTA (INCOLLA TESTO)</button>
             </div>
             <button class="btn-small" style="margin-bottom:10px;" onclick="dbAddRow()">+ AGGIUNGI NUOVO ARTICOLO</button>
             <div class="db-header-grid">
-                <div style="text-align:left; padding-left:5px;">NOME</div><div>F 7</div><div>F 15</div><div>F 20</div><div>F 36</div><div>F 67</div><div></div>
+                <div>NOME</div><div>F 7</div><div>F 15</div><div>F 20</div><div>F 36</div><div>F 67</div><div></div>
             </div>
             <div id="db-body-grid" style="overflow-y:auto; flex-grow:1; max-height:500px; background:#000;"></div>
         </div>
@@ -142,7 +132,7 @@
         <div class="card">
             <div id="analisi-riepilogo" style="color:var(--green); text-align:center; font-weight:bold; margin-bottom:20px; font-size:20px; padding:15px; border:2px solid var(--green); border-radius:8px;"></div>
             <table>
-                <thead><tr><th style="width:15%">N. ORD</th><th style="width:50%">CLIENTE</th><th style="width:25%">TOT</th><th style="width:10%"></th></tr></thead>
+                <thead><tr><th style="width:15%">N.</th><th style="width:50%">CLIENTE</th><th style="width:25%">TOT</th><th style="width:10%"></th></tr></thead>
                 <tbody id="anal-body"></tbody>
             </table>
             <button style="background:var(--red); color:#fff; border:none; padding:15px; width:100%; font-weight:bold; margin-top:auto; font-size:12px; border-radius:6px;" onclick="clearOrdini()">AZZERA STORICO</button>
@@ -151,19 +141,7 @@
 </div>
 
 <script>
-    const nativeProdotti = [
-        {nome:"Uniweiss Bianco 14L", f7:36.36, f15:33.94, f20:31.82, f36:30.05, f67:26.59},
-        {nome:"Capaweiss Ultra 14 LT", f7:59.01, f15:55.08, f20:51.64, f36:48.77, f67:43.16},
-        {nome:"Indekoweiss W 14 lt", f7:76.86, f15:71.74, f20:67.26, f36:63.52, f67:56.21},
-        {nome:"Capagips Easy 12,5", f7:69.11, f15:64.51, f20:60.48, f36:57.12, f67:50.55},
-        {nome:"Capagips Ultra 12,5", f7:86.21, f15:80.46, f20:75.43, f36:71.24, f67:63.05},
-        {nome:"Innencolor 14 lt", f7:84.94, f15:79.28, f20:74.33, f36:70.20, f67:62.12},
-        {nome:"CapaMatt 12,5", f7:99.16, f15:92.55, f20:86.77, f36:81.94, f67:72.52},
-        {nome:"Capatop 12,5", f7:139.70, f15:130.39, f20:122.24, f36:115.45, f67:102.17},
-        {nome:"Muresko 14 lt", f7:146.07, f15:136.34, f20:127.82, f36:120.71, f67:106.83},
-        {nome:"Indeko W 12,5", f7:155.73, f15:145.35, f20:136.27, f36:128.69, f67:113.89}
-    ];
-
+    const nativeProdotti = [{nome:"Uniweiss Bianco 14L", f7:36.36, f15:33.94, f20:31.82, f36:30.05, f67:26.59},{nome:"Capaweiss Ultra 14 LT", f7:59.01, f15:55.08, f20:51.64, f36:48.77, f67:43.16},{nome:"Indekoweiss W 14 lt", f7:76.86, f15:71.74, f20:67.26, f36:63.52, f67:56.21},{nome:"Capagips Easy 12,5", f7:69.11, f15:64.51, f20:60.48, f36:57.12, f67:50.55},{nome:"Capagips Ultra 12,5", f7:86.21, f15:80.46, f20:75.43, f36:71.24, f67:63.05},{nome:"Innencolor 14 lt", f7:84.94, f15:79.28, f20:74.33, f36:70.20, f67:62.12},{nome:"CapaMatt 12,5", f7:99.16, f15:92.55, f20:86.77, f36:81.94, f67:72.52},{nome:"Capatop 12,5", f7:139.70, f15:130.39, f20:122.24, f36:115.45, f67:102.17},{nome:"Muresko 14 lt", f7:146.07, f15:136.34, f20:127.82, f36:120.71, f67:106.83},{nome:"Indeko W 12,5", f7:155.73, f15:145.35, f20:136.27, f36:128.69, f67:113.89}];
     let dbProdotti = JSON.parse(localStorage.getItem('ps_prodotti')) || nativeProdotti;
     let dbClienti = JSON.parse(localStorage.getItem('ps_clienti')) || [];
     let ordini = JSON.parse(localStorage.getItem('ps_ordini')) || [];
@@ -185,6 +163,55 @@
         if(id === 'sec-analisi') renderAnalisi();
     }
 
+    // --- SISTEMA BACKUP TESTUALE (COPIA E INCOLLA) ---
+    function openExportModal() {
+        const data = { p: dbProdotti, c: dbClienti, o: ordini };
+        const text = JSON.stringify(data);
+        const html = `
+            <h2 style="color:var(--gold)">Esporta Dati</h2>
+            <p style="font-size:10px; color:#aaa;">Copia tutto il testo nel box qui sotto e salvalo nelle Note o dove preferisci.</p>
+            <textarea id="copy-area" style="height:200px; font-size:10px;" readonly>${text}</textarea>
+            <button class="btn-gold" onclick="copyText()">COPIA TESTO NEGLI APPUNTI</button>
+        `;
+        document.getElementById('modal-body').innerHTML = html;
+        document.getElementById('modal-overlay').style.display = 'flex';
+    }
+
+    function copyText() {
+        const area = document.getElementById('copy-area');
+        area.select();
+        area.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        alert("Codice copiato! Incollalo in un posto sicuro.");
+    }
+
+    function openImportModal() {
+        const html = `
+            <h2 style="color:var(--gold)">Importa Dati</h2>
+            <p style="font-size:10px; color:#aaa;">Incolla qui sotto il codice che hai salvato in precedenza.</p>
+            <textarea id="import-area" style="height:200px; font-size:10px;" placeholder="Incolla qui..."></textarea>
+            <button class="btn-gold" onclick="processImport()">CARICA DATI ORA</button>
+        `;
+        document.getElementById('modal-body').innerHTML = html;
+        document.getElementById('modal-overlay').style.display = 'flex';
+    }
+
+    function processImport() {
+        const val = document.getElementById('import-area').value;
+        try {
+            const data = JSON.parse(val);
+            if(confirm("Attenzione: i dati attuali verranno sostituiti. Continuare?")) {
+                dbProdotti = data.p || nativeProdotti;
+                dbClienti = data.c || [];
+                ordini = data.o || [];
+                saveToStorage();
+                alert("Dati ripristinati con successo!");
+                location.reload();
+            }
+        } catch(e) { alert("Errore: Il testo incollato non è valido."); }
+    }
+
+    // --- FUNZIONI CORE ---
     function addRow() {
         const tr = document.createElement('tr');
         tr.className = "row-prod";
@@ -196,7 +223,6 @@
         document.getElementById('cart-body').appendChild(tr);
     }
     function removeRow(btn) { btn.closest('tr').remove(); calcTotale(); }
-    
     function searchProd(el) {
         const box = el.nextElementSibling;
         const val = el.value.toLowerCase();
@@ -206,26 +232,22 @@
             box.style.display = 'block';
         } else box.style.display = 'none';
     }
-    
-    function selectProd(el, prodIdx) {
-        const p = dbProdotti[prodIdx]; const row = el.closest('tr');
+    function selectProd(el, idx) {
+        const p = dbProdotti[idx]; const row = el.closest('tr');
         row.querySelector('.p-search').value = p.nome; el.parentElement.style.display = 'none';
         const f = document.getElementById('v-fascia').value;
         row.querySelector('.p-prezzo').value = p['f'+f]; calcRow(row.querySelector('.p-prezzo'));
     }
-    
     function calcRow(el) {
         const row = el.closest('tr');
         const p = parseFloat(row.querySelector('.p-prezzo').value) || 0;
         const q = parseFloat(row.querySelector('.p-qta').value) || 0;
         row.querySelector('.p-tot').innerText = (p * q).toFixed(2); calcTotale();
     }
-    
     function calcTotale() {
         let t = 0; document.querySelectorAll('.row-prod .p-tot').forEach(el => t += parseFloat(el.innerText));
         document.getElementById('tot-prezzo').innerText = t.toFixed(2);
     }
-
     function salvaOrdine() {
         const c = document.getElementById('v-cliente-input').value; const t = document.getElementById('tot-prezzo').innerText;
         if(!c || t == "0.00") return;
@@ -236,123 +258,50 @@
         });
         ordini.unshift({ num: ordini.length + 1, id: Date.now(), cliente: c, totale: t, dettagli: items });
         saveToStorage(); document.getElementById('cart-body').innerHTML = ''; document.getElementById('v-cliente-input').value = '';
-        calcTotale(); addRow(); alert("Registrato!");
+        calcTotale(); addRow(); alert("Vendita Registrata!");
     }
-
-    // ANALISI CON MASCHERINA
-    function openModal(idx) {
-        const o = ordini[idx];
-        const body = document.getElementById('modal-body');
-        let html = `<strong>CLIENTE:</strong> ${o.cliente}<br><strong>TOTALE ORDINE:</strong> <span style="color:var(--green)">${o.totale} €</span><hr style="border:0; border-top:1px solid #333; margin:10px 0;">`;
-        html += `<table style="width:100%; font-size:11px;"><thead><tr><th style="text-align:left">Articolo</th><th style="text-align:center">Pr.</th><th style="text-align:center">Q.</th><th style="text-align:right">Tot.</th></tr></thead><tbody>`;
-        o.dettagli.forEach(d => {
-            const rigaTot = (parseFloat(d.p) * parseFloat(d.q)).toFixed(2);
-            html += `<tr><td style="padding:5px 0;">${d.n}</td><td style="text-align:center">${d.p}</td><td style="text-align:center">${d.q}</td><td style="text-align:right">${rigaTot}€</td></tr>`;
-        });
-        html += `</tbody></table>`;
-        body.innerHTML = html;
-        document.getElementById('modal-overlay').style.display = 'flex';
-    }
-
-    function closeModal() { document.getElementById('modal-overlay').style.display = 'none'; }
-
     function renderAnalisi() {
         let totGen = 0;
         document.getElementById('anal-body').innerHTML = ordini.map((o, i) => {
             totGen += parseFloat(o.totale);
-            return `<tr onclick="openModal(${i})" style="cursor:pointer">
-                <td>${o.num || (ordini.length - i)}</td>
-                <td>${o.cliente}</td>
-                <td style="text-align:right;">${o.totale}€</td>
-                <td style="text-align:center;"><button class="btn-red-x" onclick="event.stopPropagation(); deleteOrdine(${i})">X</button></td>
-            </tr>`;
+            return `<tr onclick="openModalDetail(${i})" style="cursor:pointer"><td>${o.num}</td><td>${o.cliente}</td><td style="text-align:right;">${o.totale}€</td><td style="text-align:center;"><button class="btn-red-x" onclick="event.stopPropagation(); deleteOrdine(${i})">X</button></td></tr>`;
         }).join('');
         document.getElementById('analisi-riepilogo').innerText = "VENDUTO TOTALE: " + totGen.toFixed(2) + " €";
     }
-
+    function openModalDetail(idx) {
+        const o = ordini[idx];
+        let h = `<h2 style="color:var(--gold)">Dettaglio Vendita</h2><p>Cliente: ${o.cliente}</p><table style="width:100%; font-size:11px;">`;
+        o.dettagli.forEach(d => { h += `<tr><td>${d.n}</td><td>${d.p}€</td><td>x${d.q}</td></tr>`; });
+        h += `</table><h3 style="color:var(--green)">Totale: ${o.totale}€</h3>`;
+        document.getElementById('modal-body').innerHTML = h;
+        document.getElementById('modal-overlay').style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('modal-overlay').style.display = 'none'; }
     function deleteOrdine(idx) { if(confirm("Eliminare?")) { ordini.splice(idx, 1); saveToStorage(); renderAnalisi(); } }
     function clearOrdini() { if(confirm("Azzera tutto?")) { ordini = []; saveToStorage(); renderAnalisi(); } }
-
-    // CLIENTI E ARCHIVIO
     function salvaCliente() {
-        const val = document.getElementById('new-cliente-nome').value;
-        if(!val) return;
+        const val = document.getElementById('new-cliente-nome').value; if(!val) return;
         if(curEditCliIdx > -1) dbClienti[curEditCliIdx] = val; else dbClienti.push(val);
-        document.getElementById('new-cliente-nome').value = ''; 
-        curEditCliIdx = -1; document.getElementById('cli-label').innerText = "Nuovo Cliente";
+        document.getElementById('new-cliente-nome').value = ''; curEditCliIdx = -1;
         saveToStorage(); renderClienti();
     }
     function renderClienti() {
-        document.getElementById('lista-clienti-box').innerHTML = dbClienti.map((c, i) => `
-            <div style="padding:15px; border-bottom:1px solid #222; display:flex; justify-content:space-between; align-items:center;">
-                <span>${c}</span>
-                <div>
-                    <button onclick="editCliente(${i})" style="color:var(--gold); background:none; border:1px solid var(--gold); padding:5px 8px; font-size:10px; margin-right:5px;">EDIT</button>
-                    <button onclick="deleteCliente(${i})" style="color:var(--red); background:none; border:1px solid var(--red); padding:5px 8px; font-size:10px;">X</button>
-                </div>
-            </div>`).join('');
+        document.getElementById('lista-clienti-box').innerHTML = dbClienti.map((c, i) => `<div style="padding:15px; border-bottom:1px solid #222; display:flex; justify-content:space-between; align-items:center;"><span>${c}</span><div><button onclick="editCliente(${i})" style="color:var(--gold); background:none; border:1px solid var(--gold); padding:5px 8px; font-size:10px; margin-right:5px;">EDIT</button><button onclick="deleteCliente(${i})" style="color:var(--red); background:none; border:1px solid var(--red); padding:5px 8px; font-size:10px;">X</button></div></div>`).join('');
     }
-    function editCliente(idx) {
-        curEditCliIdx = idx;
-        document.getElementById('new-cliente-nome').value = dbClienti[idx];
-        document.getElementById('cli-label').innerText = "Modifica Cliente";
-        window.scrollTo(0,0);
-    }
+    function editCliente(idx) { curEditCliIdx = idx; document.getElementById('new-cliente-nome').value = dbClienti[idx]; document.getElementById('cli-label').innerText = "Modifica Cliente"; window.scrollTo(0,0); }
     function deleteCliente(idx) { if(confirm("Cancellare?")) { dbClienti.splice(idx, 1); saveToStorage(); renderClienti(); } }
     function searchCliente(v) {
         const box = document.getElementById('suggest-clienti');
         const m = dbClienti.filter(c => c.toLowerCase().includes(v.toLowerCase()));
-        if(v && m.length) {
-            box.innerHTML = m.map(c => `<div class="suggest-item" onclick="selectCli('${c}')">${c}</div>`).join('');
-            box.style.display = 'block';
-        } else box.style.display = 'none';
+        if(v && m.length) { box.innerHTML = m.map(c => `<div class="suggest-item" onclick="selectCli('${c}')">${c}</div>`).join(''); box.style.display = 'block'; } else box.style.display = 'none';
     }
     function selectCli(n) { document.getElementById('v-cliente-input').value = n; document.getElementById('suggest-clienti').style.display = 'none'; }
-
     function renderArchivio() {
-        const container = document.getElementById('db-body-grid');
-        container.innerHTML = dbProdotti.map((p, i) => `
-            <div class="db-grid-row">
-                <input type="text" value="${p.nome}" oninput="updateProd(${i}, 'nome', this.value)" style="color:var(--gold); text-align:left; padding-left:5px;">
-                <input type="number" step="0.01" value="${p.f7}" oninput="updateProd(${i}, 'f7', this.value)">
-                <input type="number" step="0.01" value="${p.f15}" oninput="updateProd(${i}, 'f15', this.value)">
-                <input type="number" step="0.01" value="${p.f20}" oninput="updateProd(${i}, 'f20', this.value)">
-                <input type="number" step="0.01" value="${p.f36}" oninput="updateProd(${i}, 'f36', this.value)">
-                <input type="number" step="0.01" value="${p.f67}" oninput="updateProd(${i}, 'f67', this.value)">
-                <div style="text-align:center;"><button class="btn-red-x" onclick="deleteProd(${i})">X</button></div>
-            </div>`).join('');
+        document.getElementById('db-body-grid').innerHTML = dbProdotti.map((p, i) => `<div class="db-grid-row"><input type="text" value="${p.nome}" oninput="updateProd(${i}, 'nome', this.value)" style="color:var(--gold); text-align:left; padding-left:5px;"><input type="number" step="0.01" value="${p.f7}" oninput="updateProd(${i}, 'f7', this.value)"><input type="number" step="0.01" value="${p.f15}" oninput="updateProd(${i}, 'f15', this.value)"><input type="number" step="0.01" value="${p.f20}" oninput="updateProd(${i}, 'f20', this.value)"><input type="number" step="0.01" value="${p.f36}" oninput="updateProd(${i}, 'f36', this.value)"><input type="number" step="0.01" value="${p.f67}" oninput="updateProd(${i}, 'f67', this.value)"><div style="text-align:center;"><button class="btn-red-x" onclick="deleteProd(${i})">X</button></div></div>`).join('');
     }
-
     function updateProd(idx, field, val) { dbProdotti[idx][field] = (field === 'nome') ? val : (parseFloat(val) || 0); saveToStorage(); }
     function dbAddRow() { dbProdotti.unshift({nome:"NUOVO", f7:0, f15:0, f20:0, f36:0, f67:0}); saveToStorage(); renderArchivio(); }
     function deleteProd(idx) { if(confirm("Eliminare?")) { dbProdotti.splice(idx, 1); saveToStorage(); renderArchivio(); } }
-
-    // EXPORT / IMPORT
-    function exportBackup() {
-        const data = { p: dbProdotti, c: dbClienti, o: ordini };
-        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = `BACKUP_SIMULATOR_${new Date().toISOString().slice(0,10)}.json`;
-        a.click();
-    }
-
-    function importBackup(input) {
-        const reader = new FileReader();
-        reader.onload = function() {
-            try {
-                const data = JSON.parse(reader.result);
-                if(data.p) {
-                    dbProdotti = data.p; dbClienti = data.c || []; ordini = data.o || [];
-                    saveToStorage();
-                    alert("Importazione completata!");
-                    location.reload(); 
-                }
-            } catch(e) { alert("File non valido"); }
-        };
-        reader.readAsText(input.files[0]);
-    }
-
     function updateAllPrices() {
         const f = document.getElementById('v-fascia').value;
         document.querySelectorAll('.row-prod').forEach(row => {
@@ -361,9 +310,7 @@
             if(p) { row.querySelector('.p-prezzo').value = p['f'+f]; calcRow(row.querySelector('.p-prezzo')); }
         });
     }
-
     addRow();
 </script>
 </body>
 </html>
-🥇DEFINITIVO BY PIER 🥇
