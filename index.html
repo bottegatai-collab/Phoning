@@ -69,7 +69,7 @@
 <div class="nav">
     <button onclick="tab(this, 'sec-vendita')" class="active">VENDITA</button>
     <button onclick="tab(this, 'sec-clienti')">CLIENTI</button>
-    <button onclick="tab(this, 'sec-archivio')">ARCHIVIO</button>
+    <button onclick="tab(this, 'sec-archivio')">PRODOTTI</button>
     <button onclick="tab(this, 'sec-analisi')">ANALISI</button>
 </div>
 
@@ -109,7 +109,7 @@
             <label id="cli-label">Nuovo Cliente</label>
             <input type="text" id="new-cliente-nome" placeholder="Cognome e Nome">
             <button class="btn-gold" onclick="salvaCliente()">SALVA CLIENTE</button>
-            <label>I Tuoi Clienti</label>
+            <label> I Tuoi Clienti</label>
             <div id="lista-clienti-box" style="border:1px solid #333; border-radius:6px; flex-grow:1; overflow-y:auto; background:#050505;"></div>
         </div>
     </div>
@@ -122,7 +122,7 @@
             </div>
             <button class="btn-small" style="margin-bottom:10px;" onclick="dbAddRow()">+ AGGIUNGI NUOVO ARTICOLO</button>
             <div class="db-header-grid">
-                <div>NOME</div><div>F 7</div><div>F 15</div><div>F 20</div><div>F 36</div><div>F 67</div><div></div>
+                <div>ARTICOLO</div><div>F 7</div><div>F 15</div><div>F 20</div><div>F 36</div><div>F 67</div><div></div>
             </div>
             <div id="db-body-grid" style="overflow-y:auto; flex-grow:1; max-height:500px; background:#000;"></div>
         </div>
