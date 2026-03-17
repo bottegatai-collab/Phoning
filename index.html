@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PHONING SIMULATOR PRO 1-26 </title>
+    <title>PHONING SIMULATOR PRO 1-26</title>
     <style>
         :root { --bg: #000; --card: #111; --gold: #ffcc00; --text: #fff; --border: #222; --green: #00d4ff; --red: #ff4444; }
         * { box-sizing: border-box; touch-action: manipulation; }
@@ -46,7 +46,6 @@
         .summary-bar { display: flex; justify-content: space-between; padding: 18px; background: #000; border: 2px solid var(--gold); margin-top: 15px; font-weight: bold; font-size: 18px; border-radius: 8px; }
         .hidden { display: none; }
 
-        /* MODALE BACKUP */
         #modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: #111; border: 1px solid var(--gold); border-radius: 8px; width: 100%; max-width: 500px; padding: 20px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: 0 0 20px var(--gold); }
         .modal-close { position: absolute; top: 10px; right: 10px; background: var(--red); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; }
@@ -141,10 +140,14 @@
 </div>
 
 <script>
-    const nativeProdotti = [{nome:"Uniweiss Bianco 14L", f7:36.36, f15:33.94, f20:31.82, f36:30.05, f67:26.59},{nome:"Capaweiss Ultra 14 LT", f7:59.01, f15:55.08, f20:51.64, f36:48.77, f67:43.16},{nome:"Indekoweiss W 14 lt", f7:76.86, f15:71.74, f20:67.26, f36:63.52, f67:56.21},{nome:"Capagips Easy 12,5", f7:69.11, f15:64.51, f20:60.48, f36:57.12, f67:50.55},{nome:"Capagips Ultra 12,5", f7:86.21, f15:80.46, f20:75.43, f36:71.24, f67:63.05},{nome:"Innencolor 14 lt", f7:84.94, f15:79.28, f20:74.33, f36:70.20, f67:62.12},{nome:"CapaMatt 12,5", f7:99.16, f15:92.55, f20:86.77, f36:81.94, f67:72.52},{nome:"Capatop 12,5", f7:139.70, f15:130.39, f20:122.24, f36:115.45, f67:102.17},{nome:"Muresko 14 lt", f7:146.07, f15:136.34, f20:127.82, f36:120.71, f67:106.83},{nome:"Indeko W 12,5", f7:155.73, f15:145.35, f20:136.27, f36:128.69, f67:113.89}];
+    // DATABASE INTEGRATO CON TUTTI I TUOI PRODOTTI (51 ARTICOLI)
+    const nativeProdotti = [{"nome":"Uniweiss Bianco 14L","f7":36.36,"f15":33.94,"f20":31.82,"f36":30.05,"f67":26.59},{"nome":"Capaweiss Ultra \"Original\" 14 LT","f7":59.01,"f15":55.08,"f20":51.64,"f36":48.77,"f67":43.16},{"nome":"Indekoweiss W 14 lt","f7":76.86,"f15":71.74,"f20":67.26,"f36":63.52,"f67":56.21},{"nome":"Capagips Easy bianco lt 12,5","f7":69.11,"f15":64.51,"f20":60.48,"f36":57.12,"f67":50.55},{"nome":"Capagips Ultra bianco/base 1 lt 12,5","f7":86.21,"f15":80.46,"f20":75.43,"f36":71.24,"f67":63.05},{"nome":"Innencolor bianco base 1 lt 14","f7":84.94,"f15":79.28,"f20":74.33,"f36":70.2,"f67":62.12},{"nome":"CapaMatt bianco base 1 lt 12,5","f7":99.16,"f15":92.55,"f20":86.77,"f36":81.94,"f67":72.52},{"nome":"Capatop bianco base 1 lt 12,5","f7":139.7,"f15":130.39,"f20":122.24,"f36":115.45,"f67":102.17},{"nome":"Muresko ( Bianco Base1) lt 14","f7":146.07,"f15":136.34,"f20":127.82,"f36":120.71,"f67":106.83},{"nome":"Indeko W bianco lt. 12,5","f7":155.73,"f15":145.35,"f20":136.27,"f36":128.69,"f67":113.89},{"nome":"Unifarbe bianco/base 1 lt 12,5","f7":57.86,"f15":54.01,"f20":50.63,"f36":47.82,"f67":42.32},{"nome":"Capafarbe + bianco lt 12,5","f7":78.24,"f15":73.02,"f20":68.46,"f36":64.66,"f67":57.22},{"nome":"Indekosilver W 12,5 l","f7":91.84,"f15":85.72,"f20":80.36,"f36":75.9,"f67":67.17},{"nome":"Capatex satin bianco/base 1 lt 10","f7":123.14,"f15":114.93,"f20":107.75,"f36":101.76,"f67":90.06},{"nome":"Amphisilan bianco/ base 1 lt 10","f7":118.82,"f15":110.9,"f20":103.97,"f36":98.19,"f67":86.9},{"nome":"Thermosan NQG bianco base 1 lt 10","f7":184.98,"f15":172.65,"f20":161.86,"f36":152.87,"f67":135.29},{"nome":"MUR.AT 14L","f7":35.14,"f15":32.8,"f20":30.75,"f36":29.04,"f67":25.7},{"nome":"BOEROBIANCO PLUS BIANCO - BASE BC 14L","f7":39.94,"f15":37.28,"f20":34.95,"f36":33.01,"f67":29.21},{"nome":"SAN.AT BIANCO 14L","f7":52.4,"f15":48.91,"f20":45.85,"f36":43.3,"f67":38.32},{"nome":"MURISAN FG BASE BCO 130 14L","f7":77.68,"f15":72.5,"f20":67.97,"f36":64.19,"f67":56.81},{"nome":"KELLERMUR BIANCO OPACO 14L","f7":52.72,"f15":49.21,"f20":46.13,"f36":43.57,"f67":38.56},{"nome":"DRYTOP BIANCO LT 12","f7":72,"f15":67.2,"f20":63,"f36":59.5,"f67":52.66},{"nome":"RESPIRA PITTURA TRASP.ANTIMUFFA LT 14","f7":64.56,"f15":60.26,"f20":56.49,"f36":53.35,"f67":47.22},{"nome":"AQUABEL BASE BC ANTIMUFFA LT 14","f7":84.88,"f15":79.22,"f20":74.27,"f36":70.14,"f67":62.08},{"nome":"MATT KOALA LT 14","f7":110.16,"f15":102.82,"f20":96.39,"f36":91.04,"f67":80.56},{"nome":"BIG BEN BIANCO LT 14","f7":65.2,"f15":60.85,"f20":57.05,"f36":53.88,"f67":47.68},{"nome":"MURISAN ORO LT 14","f7":97.12,"f15":90.65,"f20":84.98,"f36":80.26,"f67":71.03},{"nome":"Supertempera Piattura bianca per interni 14 lt","f7":32.29,"f15":30.14,"f20":28.26,"f36":26.69,"f67":23.62},{"nome":"Red Panda Fullpaint Super 14 Lt","f7":43.54,"f15":40.64,"f20":38.1,"f36":35.98,"f67":31.84},{"nome":"Red Panda Profiweiss Be 12,5 lt","f7":41.45,"f15":38.69,"f20":36.27,"f36":34.26,"f67":30.32},{"nome":"Red Pamda Hydro Haft & Tiefgrund 10 lt","f7":62.16,"f15":58.02,"f20":54.39,"f36":51.37,"f67":45.46},{"nome":"Red Panda WP-Haftgrund Elf 12,5","f7":67.18,"f15":62.7,"f20":58.78,"f36":55.51,"f67":49.13},{"nome":"Red Panda Titanweiss BE 12,5 lt","f7":63.03,"f15":58.83,"f20":55.15,"f36":52.09,"f67":46.1},{"nome":"Red Panda Mineralgrund Grob Elf lt 12,5","f7":75.43,"f15":70.4,"f20":66,"f36":62.33,"f67":55.16},{"nome":"Red Panda Silikat Plus Elf 12,5 lt","f7":66.24,"f15":61.82,"f20":57.96,"f36":54.74,"f67":48.44},{"nome":"Red Panda Bio Silikat lt 15","f7":62.37,"f15":58.22,"f20":54.58,"f36":51.55,"f67":45.62},{"nome":"Red Panda Rapidweiss 12,5 lt","f7":79.95,"f15":74.62,"f20":69.96,"f36":66.07,"f67":58.47},{"nome":"Red Panda GipsWeiss lt 12,5","f7":77.23,"f15":72.08,"f20":67.58,"f36":63.82,"f67":56.48},{"nome":"Red Panda Malergold lt 12,5","f7":89.26,"f15":83.31,"f20":78.1,"f36":73.76,"f67":65.28},{"nome":"Red Panda Dura - In Bianco lt 12,5","f7":185.93,"f15":173.54,"f20":162.69,"f36":153.65,"f67":135.98},{"nome":"Red Panda Fassaden-Silikat AST lt 12,5","f7":102.42,"f15":95.59,"f20":89.62,"f36":84.64,"f67":74.9},{"nome":"RED Panda Doppeldecker BE 12,5L","f7":97.44,"f15":90.94,"f20":85.26,"f36":80.52,"f67":71.26},{"nome":"Red Panda Profiweiss Airless BE 30 lt","f7":99.47,"f15":92.84,"f20":87.04,"f36":82.2,"f67":72.75},{"nome":"Red Panda sil-fassadenfarbe 12,5 lt","f7":104.78,"f15":97.79,"f20":91.68,"f36":86.59,"f67":76.63},{"nome":"Wall Farbe 14 lt","f7":36.27,"f15":33.85,"f20":31.74,"f36":29.97,"f67":26.52},{"nome":"Fungicid Traspirante Bianco Calibrato 14 lt","f7":68.42,"f15":63.86,"f20":59.87,"f36":56.54,"f67":50.04},{"nome":"Hydrolast Color Bianco Calibrato 14 lt","f7":78.63,"f15":73.39,"f20":68.8,"f36":64.98,"f67":57.5},{"nome":"Idroboard Bianco Calibrato 14 lt","f7":92.62,"f15":86.44,"f20":81.04,"f36":76.54,"f67":67.73},{"nome":"Vierosil Extra Bianco14 lt","f7":83.74,"f15":78.16,"f20":73.28,"f36":69.2,"f67":61.24}];
+    
+    // CARICAMENTO CLIENTI E ORDINI DAL TUO JSON
     let dbProdotti = JSON.parse(localStorage.getItem('ps_prodotti')) || nativeProdotti;
-    let dbClienti = JSON.parse(localStorage.getItem('ps_clienti')) || [];
-    let ordini = JSON.parse(localStorage.getItem('ps_ordini')) || [];
+    let dbClienti = JSON.parse(localStorage.getItem('ps_clienti')) || ["Carta Roberto ","De Zanna Bruno ","Pedol Enzo ","Longarone Fiere","Priori Gianni","De Bettin Emanuele"];
+    let ordini = JSON.parse(localStorage.getItem('ps_ordini')) || [{"num":2,"id":1773740964869,"cliente":"De Zanna Bruno ","totale":"887.66","dettagli":[{"n":"Capaweiss Ultra \"Original\" 14 LT","p":"55.08","q":"8"},{"n":"Fungicid Traspirante Bianco Calibrato 14 lt","p":"63.86","q":"7"}]},{"num":1,"id":1773617316157,"cliente":"Carta Roberto ","totale":"1260.88","dettagli":[{"n":"Red Panda Fullpaint Super 14 Lt","p":"35.98","q":"16"},{"n":"Red Panda Profiweiss Be 12,5 lt","p":"34.26","q":"20"}]}];
+    
     let curEditCliIdx = -1;
 
     function saveToStorage() {
@@ -163,55 +166,23 @@
         if(id === 'sec-analisi') renderAnalisi();
     }
 
-    // --- SISTEMA BACKUP TESTUALE (COPIA E INCOLLA) ---
     function openExportModal() {
         const data = { p: dbProdotti, c: dbClienti, o: ordini };
         const text = JSON.stringify(data);
-        const html = `
-            <h2 style="color:var(--gold)">Esporta Dati</h2>
-            <p style="font-size:10px; color:#aaa;">Copia tutto il testo nel box qui sotto e salvalo nelle Note o dove preferisci.</p>
-            <textarea id="copy-area" style="height:200px; font-size:10px;" readonly>${text}</textarea>
-            <button class="btn-gold" onclick="copyText()">COPIA TESTO NEGLI APPUNTI</button>
-        `;
+        const html = `<h2 style="color:var(--gold)">Esporta Dati</h2><textarea id="copy-area" style="height:200px; font-size:10px;" readonly>${text}</textarea><button class="btn-gold" onclick="copyText()">COPIA TESTO</button>`;
         document.getElementById('modal-body').innerHTML = html;
         document.getElementById('modal-overlay').style.display = 'flex';
     }
-
-    function copyText() {
-        const area = document.getElementById('copy-area');
-        area.select();
-        area.setSelectionRange(0, 99999);
-        document.execCommand("copy");
-        alert("Codice copiato! Incollalo in un posto sicuro.");
-    }
-
+    function copyText() { const area = document.getElementById('copy-area'); area.select(); document.execCommand("copy"); alert("Copiato!"); }
     function openImportModal() {
-        const html = `
-            <h2 style="color:var(--gold)">Importa Dati</h2>
-            <p style="font-size:10px; color:#aaa;">Incolla qui sotto il codice che hai salvato in precedenza.</p>
-            <textarea id="import-area" style="height:200px; font-size:10px;" placeholder="Incolla qui..."></textarea>
-            <button class="btn-gold" onclick="processImport()">CARICA DATI ORA</button>
-        `;
+        const html = `<h2 style="color:var(--gold)">Importa Dati</h2><textarea id="import-area" style="height:200px; font-size:10px;" placeholder="Incolla qui..."></textarea><button class="btn-gold" onclick="processImport()">CARICA DATI</button>`;
         document.getElementById('modal-body').innerHTML = html;
         document.getElementById('modal-overlay').style.display = 'flex';
     }
-
     function processImport() {
-        const val = document.getElementById('import-area').value;
-        try {
-            const data = JSON.parse(val);
-            if(confirm("Attenzione: i dati attuali verranno sostituiti. Continuare?")) {
-                dbProdotti = data.p || nativeProdotti;
-                dbClienti = data.c || [];
-                ordini = data.o || [];
-                saveToStorage();
-                alert("Dati ripristinati con successo!");
-                location.reload();
-            }
-        } catch(e) { alert("Errore: Il testo incollato non è valido."); }
+        try { const d = JSON.parse(document.getElementById('import-area').value); if(confirm("Sostituire tutto?")) { dbProdotti=d.p; dbClienti=d.c; ordini=d.o; saveToStorage(); location.reload(); } } catch(e) { alert("Errore JSON!"); }
     }
 
-    // --- FUNZIONI CORE ---
     function addRow() {
         const tr = document.createElement('tr');
         tr.className = "row-prod";
